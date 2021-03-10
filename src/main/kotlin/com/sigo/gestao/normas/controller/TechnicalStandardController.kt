@@ -3,7 +3,10 @@ package com.sigo.gestao.normas.controller
 import com.sigo.gestao.normas.dto.request.TechnicalStandardRequest
 import com.sigo.gestao.normas.dto.response.TechnicalStandardResponse
 import com.sigo.gestao.normas.exception.TechnicalStandardNotFound
+import com.sigo.gestao.normas.model.TechnicalStandard
+import com.sigo.gestao.normas.service.TechnicalStandardService
 import org.apache.tomcat.util.http.parser.HttpParser
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,42 +22,50 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.util.*
 import javax.validation.Valid
 
-@RestController()
+@RestController
 @RequestMapping("/normas")
-class GestaoNormasController {
-
-    companion object {
-        val standards: MutableList<TechnicalStandardResponse> = mutableListOf()
-    }
+class TechnicalStandardController
+    @Autowired constructor(val technicalStandardService: TechnicalStandardService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody @Valid technicalStandardRequest: TechnicalStandardRequest): ResponseEntity.BodyBuilder {
-        val createdEntity = TechnicalStandardResponse(
+    fun create(
+            @RequestBody @Valid technicalStandardRequest: TechnicalStandardRequest,
+            uriComponentsBuilder: ServletUriComponentsBuilder
+    ): ResponseEntity<TechnicalStandardResponse> {
+        val model = TechnicalStandard(
                 technicalStandardRequest.name,
                 technicalStandardRequest.version,
                 technicalStandardRequest.validity,
                 technicalStandardRequest.iso
         )
-        standards.add(createdEntity)
-        val location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
+
+        val created = technicalStandardService.create(model)
+        val location = uriComponentsBuilder
                 .path("/{id}")
-                .buildAndExpand(createdEntity.id)
+                .buildAndExpand(created.id)
                 .toUri()
 
-        return ResponseEntity.created(location)
+        val (name, version, validity, iso, id) = created
+        return ResponseEntity.created(location).body(TechnicalStandardResponse(
+                name, version, validity, iso, id
+        ))
     }
 
     @GetMapping("/{id}")
-    fun getById( @PathVariable id: UUID): TechnicalStandardResponse {
-        return Optional.ofNullable(standards.firstOrNull { it.id == id })
-                .orElseThrow { TechnicalStandardNotFound("Technical Standard not found. Id: $id") }
+    fun getById(@PathVariable id: UUID): TechnicalStandardResponse {
+        val (name, version, validity, iso, id) = technicalStandardService.getById(id)
+        return TechnicalStandardResponse(
+                name, version, validity, iso, id
+        )
     }
 
     @GetMapping("/all")
     fun getAll(): List<TechnicalStandardResponse> {
-        return standards
+        return technicalStandardService.getAll().map {
+            val (name, version, validity, iso, id) = it
+            TechnicalStandardResponse(name, version, validity, iso, id)
+        }
     }
 
 

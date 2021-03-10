@@ -7,5 +7,4 @@ open class TechnicalStandardRequest (
         var version: String = "",
         var validity: String = "",
         var iso: String = ""
-) : Serializable {
-}
+) : Serializable

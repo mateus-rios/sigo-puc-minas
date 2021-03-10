@@ -7,10 +7,8 @@ class TechnicalStandardResponse(
         name: String,
         version: String,
         validity: String,
-        iso: String
+        iso: String,
+        var id: UUID = UUID.randomUUID()
 ) : TechnicalStandardRequest(
         name, version, validity, iso
-) {
-
-    var id: UUID = UUID.randomUUID()
-}
+)
