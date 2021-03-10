@@ -25,7 +25,7 @@ class JwtFilter @Autowired constructor(
                     }
                     authorization = it.split(" ")[1]
                 }
-         tokenService.validAndAuthenticate(authorization)
+        tokenService.validAndAuthenticate(authorization)
 
         filterChain.doFilter(req, res)
     }
