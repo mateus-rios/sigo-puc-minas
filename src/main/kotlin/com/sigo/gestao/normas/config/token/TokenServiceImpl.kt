@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 internal class TokenServiceImpl : TokenService {
 
     @Value("\${jwt.secret}")
-    var secretKey: String = ""
+    private lateinit var secretKey: String
 
     override fun validAndAuthenticate(token: String?): Boolean {
         return try {

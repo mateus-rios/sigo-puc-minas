@@ -1,4 +1,4 @@
-package com.sigo.gestao.normas.service
+package com.sigo.gestao.normas.service.technical.standard
 
 import com.sigo.gestao.normas.model.TechnicalStandard
 import java.util.UUID

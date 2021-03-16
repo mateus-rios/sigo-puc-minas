@@ -12,10 +12,10 @@ import java.util.Date
 class TokenFactory {
 
     @Value("\${jwt.expiration.seconds}")
-    var expirationTime: Long = 0
+    private var expirationTime: Long = 0
 
     @Value("\${jwt.secret}")
-    var secret: String = ""
+    private lateinit var secret: String
 
     fun create(authRequest: AuthRequest): String? {
         val now = Date()

@@ -9,5 +9,5 @@ data class TechnicalStandard (
         var version: String = "",
         var validity: String = "",
         var iso: String = "",
-        var id: UUID = UUID.randomUUID()
-) : Serializable
+        override var id: UUID = UUID.randomUUID()
+) : DefaultData
