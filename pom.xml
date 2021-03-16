@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.sigo</groupId>
     <artifactId>gestao-normas</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>demo</name>
     <description>Gestor de nromas técnicas</description>
     <properties>
