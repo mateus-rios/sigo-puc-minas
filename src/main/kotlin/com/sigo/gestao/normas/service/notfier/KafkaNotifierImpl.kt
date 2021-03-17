@@ -19,7 +19,6 @@ internal class KafkaNotifierImpl
     private lateinit var kafkaTopicsUrl: String
 
     private companion object {
-        const val URL = "http://localhost:38082/topics"
         val headers = HttpHeaders()
     }
 
@@ -31,7 +30,7 @@ internal class KafkaNotifierImpl
         val body = KafkaRequest()
         body.addRecord(data)
         val request = HttpEntity<Any>(body, headers)
-        val response = restTemplate.postForObject("$URL/$topicName", request, Map::class.java)
+        val response = restTemplate.postForObject("$kafkaTopicsUrl/$topicName", request, Map::class.java)
         println(response)
     }
 }
