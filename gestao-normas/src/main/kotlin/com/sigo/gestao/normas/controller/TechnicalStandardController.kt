@@ -38,7 +38,7 @@ class TechnicalStandardController
 
         val created = technicalStandardService.create(model)
         val location = uriComponentsBuilder
-                .path("/{id}")
+                .path("/normas/{id}")
                 .buildAndExpand(created.id)
                 .toUri()
 
