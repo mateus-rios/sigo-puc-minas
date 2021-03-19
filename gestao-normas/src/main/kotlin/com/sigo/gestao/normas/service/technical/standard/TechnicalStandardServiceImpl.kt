@@ -11,10 +11,6 @@ import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
-import org.springframework.web.client.getForEntity
-import org.springframework.web.client.postForObject
-import java.lang.reflect.ParameterizedType
-import java.util.Optional
 import java.util.UUID
 
 @Service
@@ -31,7 +27,14 @@ internal class TechnicalStandardServiceImpl
     @Value("\${repositorio.normas.url}")
     private lateinit var urlRepositorioNormas: String
 
-    private val restTemplate: RestTemplate = restTemplateBuilder.build()
+    @Value("\${repositorio.normas.user}")
+    private lateinit var userRepositorioNormas: String
+
+    @Value("\${repositorio.normas.password}")
+    private lateinit var passwordRepositorioNormas: String
+
+    private val restTemplate: RestTemplate =
+            restTemplateBuilder.basicAuthentication(userRepositorioNormas, passwordRepositorioNormas).build()
 
     override fun create(technicalStandard: TechnicalStandard): TechnicalStandard {
         restTemplate.postForObject(urlRepositorioNormas, technicalStandard, Map::class.java)
