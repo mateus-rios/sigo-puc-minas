@@ -62,10 +62,26 @@ services:
     ports:
     - "8080:8080"
     depends_on:
-    -kafka-rest
+    - kafka-rest
+    - repositorio-normas
     
   simple-consumer:
-    image: simple_consumer
+    image: simple_consumer:latest
     depends_on:
     - kafka
+    
+  repositorio-normas:
+    image: repositorio_normas:latest
+    ports:
+    - "8083:8083"
+    hostname: repositorio-normas
+    
+  sigo-interface:
+    image: sigo_interface:latest
+    ports:
+    - "80:80"
+    hostname: sigo-interface
+    depends_on:
+    - gestao-normas
+   
    
