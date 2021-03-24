@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  gestaNormasUrl: 'http://gestao-normas:8080/normas',
+  loginUrl: 'http://gestao-normas:8080'
 };
 
 /*
