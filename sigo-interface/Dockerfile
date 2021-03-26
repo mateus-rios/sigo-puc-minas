@@ -1,5 +1,5 @@
 # Estagio 1 - Será responsavel em construir nossa aplicação
-FROM node:9.11.2-slim as node
+FROM node:15.12.0-slim as node
 WORKDIR /app
 COPY package.json /app/
 RUN npm i npm@latest -g
