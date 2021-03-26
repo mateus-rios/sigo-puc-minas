@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  gestaNormasUrl: 'http://gestao-normas:8080/normas',
-  loginUrl: 'http://gestao-normas:8080/auth'
+  gestaNormasUrl: 'http://localhost:8080/normas',
+  loginUrl: 'http://localhost:8080/auth'
 };
 
 /*
