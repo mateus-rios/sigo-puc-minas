@@ -64,12 +64,7 @@ services:
     depends_on:
     - kafka-rest
     - repositorio-normas
-    
-  simple-consumer:
-    image: simple_consumer:latest
-    depends_on:
-    - kafka
-    
+
   repositorio-normas:
     image: repositorio_normas:latest
     ports:
