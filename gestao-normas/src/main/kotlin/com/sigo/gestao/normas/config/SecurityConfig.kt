@@ -49,14 +49,12 @@ class SecurityConfig @Autowired constructor(
         
         val simpleUser = User
                 .withUsername("simpleUser")
-                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode)
-                .password("simpleUserPoc123")
+                .password("{noop}simpleUserPoc123")
                 .roles("USER").build()
 
         val managerUser = User
                 .withUsername("simpleManager")
-                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode)
-                .password("simpleManagerPoc123")
+                .password("{noop}simpleManagerPoc123")
                 .roles("ADMIN").build()
 
         val inMemoryDetails = InMemoryUserDetailsManager()
