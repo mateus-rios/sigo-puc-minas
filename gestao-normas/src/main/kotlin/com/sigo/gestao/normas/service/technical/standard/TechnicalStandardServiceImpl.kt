@@ -25,13 +25,13 @@ internal class TechnicalStandardServiceImpl
     }
 
     @Value("\${repositorio.normas.url}")
-    private lateinit var urlRepositorioNormas: String
+    private var urlRepositorioNormas: String = ""
 
     @Value("\${repositorio.normas.user}")
-    private lateinit var userRepositorioNormas: String
+    private var userRepositorioNormas: String = ""
 
     @Value("\${repositorio.normas.password}")
-    private lateinit var passwordRepositorioNormas: String
+    private var passwordRepositorioNormas: String = ""
 
     private val restTemplate: RestTemplate =
             restTemplateBuilder.basicAuthentication(userRepositorioNormas, passwordRepositorioNormas).build()
