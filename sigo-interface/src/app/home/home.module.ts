@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SharedComponentsModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [SigninComponent, MainComponent],
@@ -20,7 +21,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         MatFormFieldModule,
         BrowserAnimationsModule,
         MatSliderModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        SharedComponentsModule
     ]
 })
 export class HomeModule {

@@ -1,6 +1,6 @@
 <div class="container-log">
   <div class="login-wrapper">
-    <form [formGroup]="loginForm" class="login-form" (submit)="login()">
+    <form [formGroup]="loginForm" class="login-form">
 
       <span class="login-form-title p-b-26">
         Bem Vindo
@@ -36,11 +36,10 @@
             placeholder="Password">      
         </mat-form-field>
       </div>
+    
+      <app-action-button labelWhileExecute="Entrando" label="Entrar" (functionToExecute)="login()" [execute]="loging">
 
-      <button type="submit" class="btn btn-primary btn-block">
-        Entrar
-      </button>
-
+      </app-action-button>
     </form>
   </div>
 

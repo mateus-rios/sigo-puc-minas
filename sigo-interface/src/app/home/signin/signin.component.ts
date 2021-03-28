@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SigninComponent implements OnInit {
 
   loginForm: FormGroup
+  loging: boolean = false
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,13 +30,16 @@ export class SigninComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {      
       const credentials = this.loginForm.value
+      this.loging = true
       this.authService.authenticate(credentials)
         .subscribe(
           res => {
+            this.loging = false
             this.authService.saveSession(res)
             this.router.navigate(['main'])
           },
           error => {
+            this.loging = false
             this.snackBar.open('Usuário ou senha inválidos. Verifique e tente novamente', 'OK')
           }
         )

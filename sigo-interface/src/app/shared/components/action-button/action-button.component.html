@@ -1,0 +1,16 @@
+<button type="submit" (click)="action()" class="btn btn-primary btn-block" [disabled]="execute">
+
+    <span *ngIf="execute">
+        <i class="fa fa-spinner fa-pulse"></i>
+        <span ngClass="d-none d-sm-inline">
+            {{labelWhileExecute}}
+        </span>
+    </span>
+
+    <span *ngIf="!execute">
+        <span class="d-none d-sm-inline">
+            &nbsp;{{label}}
+        </span>
+    </span>    
+
+</button>
