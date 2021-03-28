@@ -8,8 +8,24 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider'
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedComponentsModule } from '../shared/shared.module';
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE, DateAdapter } from '@angular/material/core';
+
+
+const DATE_INPUT_FORMATS = {
+    parse: {
+        dateInput: 'DD/MM/YYYY',
+    },
+    display: {
+        dateInput: 'DD/MM/YYYY',
+        monthYearLabel: 'MMMM YYYY',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM YYYY',
+    },
+}
 
 @NgModule({
     declarations: [SigninComponent, MainComponent],
@@ -22,7 +38,16 @@ import { SharedComponentsModule } from '../shared/shared.module';
         BrowserAnimationsModule,
         MatSliderModule,
         MatSnackBarModule,
-        SharedComponentsModule
+        SharedComponentsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatMomentDateModule
+    ],
+    providers: [
+        MatDatepickerModule,
+        { provide: MAT_DATE_FORMATS, useValue: DATE_INPUT_FORMATS },
+        { provide: MAT_DATE_LOCALE, useValue: 'pt-br' },
+        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     ]
 })
 export class HomeModule {

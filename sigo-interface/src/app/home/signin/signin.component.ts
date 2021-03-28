@@ -33,14 +33,14 @@ export class SigninComponent implements OnInit {
       this.loging = true
       this.authService.authenticate(credentials)
         .subscribe(
-          res => {
+          (res: any) => {
             this.loging = false
-            this.authService.saveSession(res)
+            this.authService.saveSession(res.token)
             this.router.navigate(['main'])
           },
           error => {
             this.loging = false
-            this.snackBar.open('Usuário ou senha inválidos. Verifique e tente novamente', 'OK')
+            this.snackBar.open('Usuário ou senha inválidos. Verifique e tente novamente', 'OK', {duration: 3000})
           }
         )
     }

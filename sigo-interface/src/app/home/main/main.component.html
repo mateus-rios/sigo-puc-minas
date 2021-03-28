@@ -1,5 +1,57 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQdqBXByW-DT5iNwua4KwFWNY52JIrI_iiXw&usqp=CAU" width="30" height="30" alt="">
-  </a>
+  <a class="navbar-brand" href="#">SIGO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+      <a class="nav-item nav-link active" href="#">Gestão de Normas <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link disabled" href="#">Consultorias e Assessorias</a>
+    </div>
+  </div>
 </nav>
+<div class="container-form">
+  <div class="container mt-4">
+    <p class="h2">Cadastro de Normas Técnicas</p>
+    <div class="row mt-4">
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <mat-form-field>
+          <input type="text" [formControl]="normasForm.controls.name" autocomplete="off" matInput placeholder="Nome">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <mat-form-field>
+          <mat-label>Selecione a Validade</mat-label>
+          <input matInput [formControl]="normasForm.controls.validity" [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>       
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <mat-form-field>
+          <input type="text" [formControl]="normasForm.controls.iso" autocomplete="off" matInput placeholder="Padrão ISO">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <mat-form-field>
+          <input type="text" [formControl]="normasForm.controls.version" autocomplete="off" matInput placeholder="Versão">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-lg-3 col-sm-12">
+        <app-action-button labelWhileExecute="Aguarde..." label="Cadastrar" (functionToExecute)="create()"
+          [execute]="creating">
+
+        </app-action-button>
+      </div>
+    </div>
+  </div>
+</div>
