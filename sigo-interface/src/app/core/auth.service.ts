@@ -15,7 +15,7 @@ export class AuthService {
     return this.httpClient.post(environment.loginUrl, {username, password})
   }
 
-  saveToken(token) {
+  saveSession(token) {
     localStorage.setItem('token', token)
   }
 }

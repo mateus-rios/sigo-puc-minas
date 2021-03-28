@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
       this.authService.authenticate(credentials)
         .subscribe(
           res => {
-            this.authService.saveToken(res)
+            this.authService.saveSession(res)
             this.router.navigate(['main'])
           },
           error => {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SigninComponent } from './home/signin/signin.component';
 import { MainComponent } from './home/main/main.component';
+import { SimpleGuardService } from './core/simple-guard.service';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    component: MainComponent
+    component: MainComponent,
+    canActivate: [SimpleGuardService]
   }
 ];
 
