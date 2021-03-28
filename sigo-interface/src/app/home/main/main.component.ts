@@ -42,6 +42,7 @@ export class MainComponent implements OnInit {
           res => {
             this.creating = false
             this.snackBar.open('Norma incluída com sucesso', 'OK', { duration: 3000 })
+            this.normasForm.reset()
           },
           error => {
             this.creating = false
