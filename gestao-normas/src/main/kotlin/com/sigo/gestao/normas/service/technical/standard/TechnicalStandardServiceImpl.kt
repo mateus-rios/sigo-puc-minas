@@ -30,9 +30,10 @@ internal class TechnicalStandardServiceImpl
 
 
     override fun create(technicalStandard: TechnicalStandard): TechnicalStandard {
-        restTemplate.postForObject(urlRepositorioNormas, technicalStandard, Map::class.java)
+        val r = restTemplate.postForObject(urlRepositorioNormas, technicalStandard, Map::class.java)
         kafkaNotifier.notify(TOPIC_NAME, technicalStandard)
-        return technicalStandard
+        technicalStandard.id = UUID.fromString(r["id"])
+		return technicalStandard
     }
 
     override fun getById(id: UUID): TechnicalStandard {
