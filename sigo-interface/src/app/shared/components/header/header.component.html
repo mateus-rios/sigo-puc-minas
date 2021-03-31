@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">SIGO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Gestão de Normas
+                </a>
+                <div class="dropdown-menu bg-dropdown" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#" [routerLink]="['/gestao-normas']">Cadastro</a>
+                  <a class="dropdown-item disabled" href="#">Listar</a>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-item nav-link disabled" href="#">Consultorias e Assessorias</a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { NormasService } from 'src/app/core/normas.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main',
@@ -10,46 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MainComponent implements OnInit {
 
-  creating: boolean
-  normasForm
-  constructor(
-    private formBuilder: FormBuilder,
-    private normasService: NormasService,
-    private snackBar: MatSnackBar
-  ) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.normasForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      version: ['', Validators.required],
-      validity: ['', Validators.required],
-      iso: ['', Validators.required]
-    })
-  }
-
-  create() {
-    if (this.normasForm.valid) {
-      const {name, validity, iso, version} = this.normasForm.value
-      const request = {
-        name,
-        validity: validity.format('DD/MM/YYYY'),
-        iso,
-        version
-      }
-      this.creating = true
-      this.normasService.create(request)
-        .subscribe(
-          res => {
-            this.creating = false
-            this.snackBar.open('Norma incluída com sucesso', 'OK', { duration: 3000 })
-            this.normasForm.reset()
-          },
-          error => {
-            this.creating = false
-            this.snackBar.open('Ocorreu um erro ao realizar a operação, tente novamente mais tarde', 'OK', { duration: 3000 })
-          }
-        )
-    }
-  }
-
+  ngOnInit() { }
 }

@@ -1,20 +1,22 @@
 .container-log {
     min-height: 100vh;
     width: 100%;
-    background: #f2f2f2;
+    background: #fff;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: 15px;
+    background-image: url("/../../assets/tecido-wp-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .login-wrapper {
-    width: 390px;
-    background: #fff;
+    background: #f2f2f2;
     border-radius: 10px;
     overflow: hidden;
-    padding: 77px 55px 33px;
+    padding: 35px 55px 33px;
 }
 
 
@@ -36,17 +38,21 @@
 }
 
 .login-form {
-    width: 100%;    
+    width: 100%; 
+    opacity: 1;
 }
 
 .login-form-title i {
     font-size: 60px;
 }
 
-
 .wrap-input {
     width: 100%;
     position: relative;
     border-bottom: 2px solid #adadad;
     margin-bottom: 37px;
+}
+
+.login-sigo {
+    font-size: 40px;
 }
