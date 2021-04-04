@@ -8,6 +8,7 @@ ARG env=prod
 RUN npm run build
 
 # Estagio 2 - Será responsavel por expor a aplicação
-FROM nginx:1.13
+FROM nginx:alpine
 COPY --from=node /app/dist/sigo-interface /usr/share/nginx/html
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
