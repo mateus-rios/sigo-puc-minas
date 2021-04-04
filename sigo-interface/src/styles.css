@@ -1,3 +1,17 @@
 mat-form-field {
     width: 100%;
 }
+
+.container-form {
+    min-height: calc(100vh - 50px);
+    width: 100%;
+    background: #f2f2f2;
+    margin-top: 50px;
+    background-image: url("/../../assets/tecido-wp-2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

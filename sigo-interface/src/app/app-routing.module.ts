@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SigninComponent } from './home/signin/signin.component';
 import { MainComponent } from './home/main/main.component';
 import { SimpleGuardService } from './core/simple-guard.service';
+import { GestaoNormasComponent } from './home/gestao-normas/gestao-normas.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+    canActivate: [SimpleGuardService]
+  },
+  {
+    path: 'gestao-normas',
+    component: GestaoNormasComponent,
     canActivate: [SimpleGuardService]
   }
 ];
