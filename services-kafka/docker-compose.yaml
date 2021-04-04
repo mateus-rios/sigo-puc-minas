@@ -74,7 +74,7 @@ services:
   sigo-interface:
     image: sigo_interface:latest
     ports:
-    - "80:80"
+    - "8085:80"
     hostname: sigo-interface
     depends_on:
     - gestao-normas

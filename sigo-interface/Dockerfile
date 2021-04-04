@@ -11,4 +11,3 @@ RUN npm run build
 FROM nginx:alpine
 COPY --from=node /app/dist/sigo-interface /usr/share/nginx/html
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
