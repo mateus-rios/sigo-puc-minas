@@ -16,5 +16,5 @@ docker build -t simple_consumer .
 
 cd ..
 echo "building sigo-interface"
-cd simple-consumer
+cd sigo-interface
 docker build -t sigo_interface .
