@@ -19,12 +19,16 @@ export class GestaoNormasComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.normasForm = this.formBuilder.group({
+    this.normasForm = this.createForm()
+  }
+
+  private createForm(): FormGroup {
+    return this.formBuilder.group({
       name: ['', Validators.required],
       version: ['', Validators.required],
       validity: ['', Validators.required],
       iso: ['', Validators.required]
-    })
+    });
   }
 
   create() {
@@ -42,7 +46,7 @@ export class GestaoNormasComponent implements OnInit {
           res => {
             this.creating = false
             this.snackBar.open('Norma incluída com sucesso', 'OK', { duration: 3000 })
-            this.normasForm.reset()
+            this.normasForm = this.createForm()
           },
           error => {
             this.creating = false
