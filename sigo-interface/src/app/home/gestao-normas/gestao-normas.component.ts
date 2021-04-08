@@ -41,6 +41,7 @@ export class GestaoNormasComponent implements OnInit {
         version
       }
       this.creating = true
+      this.normasForm.disable()
       this.normasService.create(request)
         .subscribe(
           res => {
@@ -49,6 +50,7 @@ export class GestaoNormasComponent implements OnInit {
             this.normasForm = this.createForm()
           },
           error => {
+            this.normasForm.enable()
             this.creating = false
             this.snackBar.open('Ocorreu um erro ao realizar a operação, tente novamente mais tarde', 'OK', { duration: 3000 })
           }
