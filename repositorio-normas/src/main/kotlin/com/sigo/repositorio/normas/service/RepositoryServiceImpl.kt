@@ -27,12 +27,14 @@ internal class RepositoryServiceImpl : RepositoryService {
         return standards
     }
 
-    override fun update(update: TechnicalStandard) {
+    override fun update(update: TechnicalStandard): TechnicalStandard {
         var technicalStandard = getById(update.id)
         technicalStandard.iso = update.iso
         technicalStandard.name = update.name
         technicalStandard.validity = update.validity
         technicalStandard.version = update.version
+
+        return technicalStandard
     }
 
     override fun delete(id: UUID) {
