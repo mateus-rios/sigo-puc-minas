@@ -8,4 +8,6 @@ interface RepositoryService {
     fun create(technicalStandard: TechnicalStandard): TechnicalStandard
     fun getById(id: UUID): TechnicalStandard
     fun getAll(): List<TechnicalStandard>
+    fun update(technicalStandard: TechnicalStandard)
+    fun delete(id: UUID)
 }

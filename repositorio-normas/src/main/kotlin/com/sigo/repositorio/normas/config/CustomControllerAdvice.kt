@@ -1,4 +1,4 @@
-package com.sigo.gestao.normas.config
+package com.sigo.repositorio.normas.config
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.sigo.gestao.normas.exception.TechnicalStandardNotFound

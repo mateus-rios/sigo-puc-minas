@@ -48,5 +48,14 @@ internal class TechnicalStandardServiceImpl
         val response = restTemplate.exchange("$urlRepositorioNormas/all", HttpMethod.GET, null, object : ParameterizedTypeReference<List<TechnicalStandard>>() {})
         return response.body!!
     }
+
+    override fun update(technicalStandard: TechnicalStandard): TechnicalStandard {
+        restTemplate.put("$urlRepositorioNormas/${technicalStandard.id}", technicalStandard)
+        return technicalStandard
+    }
+
+    override fun delete(id: UUID) {
+        restTemplate.delete("$urlRepositorioNormas/$id")
+    }
     
 }
