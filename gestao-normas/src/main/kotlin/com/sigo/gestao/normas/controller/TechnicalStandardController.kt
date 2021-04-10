@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.util.UUID
 import javax.validation.Valid
-import javax.validation.constraints.NotNull
+
 
 @RestController
 @RequestMapping("/normas")
@@ -27,7 +27,7 @@ class TechnicalStandardController
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun create(
-            @RequestBody @Valid @NotNull technicalStandardRequest: TechnicalStandardRequest,
+            @Valid @RequestBody technicalStandardRequest: TechnicalStandardRequest,
             uriComponentsBuilder: ServletUriComponentsBuilder
     ): ResponseEntity<TechnicalStandardResponse> {
         val model = TechnicalStandard(
