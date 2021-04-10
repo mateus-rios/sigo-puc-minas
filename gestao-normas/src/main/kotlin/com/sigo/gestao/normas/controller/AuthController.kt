@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
+import javax.validation.constraints.NotNull
 
 @RestController
 class AuthController @Autowired constructor(
@@ -18,7 +19,7 @@ class AuthController @Autowired constructor(
 ) {
 
     @PostMapping("/auth")
-    fun authorize(@RequestBody @Valid authRequest: AuthRequest): ResponseEntity<Any> {
+    fun authorize(@RequestBody @Valid  @NotNull authRequest: AuthRequest): ResponseEntity<Any> {
         return try {
             authManager.authenticate(UsernamePasswordAuthenticationToken(authRequest.username, authRequest.password))
             val token = tokenFactory.create(authRequest)
