@@ -7,9 +7,11 @@ import com.sigo.repositorio.normas.service.RepositoryService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
@@ -61,5 +63,26 @@ class Controller @Autowired constructor(
             val (name, version, validity, iso, id) = it
             TechnicalStandardResponse(name, version, validity, iso, id)
         }
+    }
+
+    @PutMapping("/{id}")
+    fun update(@PathVariable id: UUID, @Valid @RequestBody technicalStandardRequest: TechnicalStandardRequest): TechnicalStandardResponse {
+        val model = TechnicalStandard(
+                technicalStandardRequest.name,
+                technicalStandardRequest.version,
+                technicalStandardRequest.validity,
+                technicalStandardRequest.iso,
+                id
+        )
+        val (name, version, validity, iso, id) = repositoryService.update(model)
+        return TechnicalStandardResponse(
+                name, version, validity, iso, id
+        )
+    }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable id: UUID): ResponseEntity<Void> {
+        repositoryService.delete(id)
+        return ResponseEntity.noContent().build()
     }
 }

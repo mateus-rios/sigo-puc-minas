@@ -60,19 +60,24 @@ class TechnicalStandardController
     }
 
     @PutMapping("/{id}")
-    fun update(@PathVariable id: UUID): TechnicalStandardResponse {
-        val (name, version, validity, iso, id) = technicalStandardService.getById(id)
+    fun update(@PathVariable id: UUID, @Valid @RequestBody technicalStandard: TechnicalStandardRequest): TechnicalStandardResponse {
+        val model = TechnicalStandard(
+                technicalStandard.name,
+                technicalStandard.version,
+                technicalStandard.validity,
+                technicalStandard.iso,
+                id
+        )
+        val (name, version, validity, iso, id) = technicalStandardService.update(model)
         return TechnicalStandardResponse(
                 name, version, validity, iso, id
         )
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: UUID): TechnicalStandardResponse {
-        val (name, version, validity, iso, id) = technicalStandardService.getById(id)
-        return TechnicalStandardResponse(
-                name, version, validity, iso, id
-        )
+    fun delete(@PathVariable id: UUID): ResponseEntity<Any> {
+        technicalStandardService.delete(id)
+        return ResponseEntity.noContent().build()
     }
 
     @GetMapping("/all")
