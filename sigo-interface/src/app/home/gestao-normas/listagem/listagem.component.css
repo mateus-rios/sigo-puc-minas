@@ -4,6 +4,10 @@
     overflow: hidden;
     padding: 35px 55px 33px;
     margin: 15px 15px;
-    width: 30vw;
+    min-width: 50vw;
     max-height: 65vh;
+}
+
+.mlc-p {
+    padding: 0 ;
 }

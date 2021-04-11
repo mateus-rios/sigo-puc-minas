@@ -5,11 +5,11 @@
         <mat-divider></mat-divider>
         <p class="h4 text-muted mt-4" *ngIf="!items.length">Não há normas técnicas</p>
         <mat-nav-list *ngIf="items.length">
-            <mat-list-item class="mat-list-content" *ngFor="let item; index as i of items">
-                <h3 matLine><span class="font-weight-bold">Nome: </span>{{ item.name }}</h3>
-                <h3 matLine><span class="font-weight-bold">Validade: </span>{{ item.validity }}</h3>
-                <h3 matLine><span class="font-weight-bold">Padrão ISO: </span>{{ item.iso }}</h3>
-                <h3 matLine><span class="font-weight-bold">Versão: </span>{{ item.version }}</h3>
+            <mat-list-item class="mat-list-content mlc-p" *ngFor="let item; index as i of items">
+                <h3 matLine class="mt-2"><span class="font-weight-bold">Nome: </span>{{ item.name }}</h3>
+                <h3 matLine class="mt-2"><span class="font-weight-bold">Validade: </span>{{ item.validity }}</h3>
+                <h3 matLine class="mt-2"><span class="font-weight-bold">Padrão ISO: </span>{{ item.iso }}</h3>
+                <h3 matLine class="mt-2"><span class="font-weight-bold">Versão: </span>{{ item.version }}</h3>
                 <button mat-icon-button (click)="delete(item, i)" aria-label="Remover item">
                     <mat-icon>delete</mat-icon>
                   </button>

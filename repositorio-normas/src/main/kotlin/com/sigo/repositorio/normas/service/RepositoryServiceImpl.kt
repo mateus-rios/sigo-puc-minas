@@ -10,7 +10,9 @@ import java.util.UUID
 internal class RepositoryServiceImpl : RepositoryService {
 
     private companion object {
-        val standards: MutableList<TechnicalStandard> = mutableListOf()
+        val standards: MutableList<TechnicalStandard> = MutableList(3) {
+            TechnicalStandard("Norma $it", "Versão $it", "10/10/2023", "${9000 + it}")
+        }
     }
 
     override fun create(technicalStandard: TechnicalStandard): TechnicalStandard {
