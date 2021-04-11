@@ -1,0 +1,9 @@
+.lista-wrapper {
+    background: #f2f2f2;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 35px 55px 33px;
+    margin: 15px 15px;
+    width: 30vw;
+    max-height: 65vh;
+}

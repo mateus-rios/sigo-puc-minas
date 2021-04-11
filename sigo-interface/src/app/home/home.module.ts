@@ -14,6 +14,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE, DateAdapter } from '@angular/material/core';
 import { GestaoNormasComponent } from './gestao-normas/gestao-normas.component';
+import { ListagemComponent } from './gestao-normas/listagem/listagem.component';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 const DATE_INPUT_FORMATS = {
@@ -29,7 +33,12 @@ const DATE_INPUT_FORMATS = {
 }
 
 @NgModule({
-    declarations: [SigninComponent, MainComponent, GestaoNormasComponent],
+    declarations: [
+        SigninComponent,
+        MainComponent,
+        GestaoNormasComponent,
+        ListagemComponent
+    ],
     imports: [
         ReactiveFormsModule,
         RouterModule,
@@ -41,8 +50,11 @@ const DATE_INPUT_FORMATS = {
         MatSnackBarModule,
         SharedComponentsModule,
         MatDatepickerModule,
+        MatListModule,
         MatNativeDateModule,
-        MatMomentDateModule
+        MatMomentDateModule,
+        MatIconModule,
+        MatButtonModule
     ],
     providers: [
         MatDatepickerModule,

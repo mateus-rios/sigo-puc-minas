@@ -4,6 +4,7 @@ import { SigninComponent } from './home/signin/signin.component';
 import { MainComponent } from './home/main/main.component';
 import { SimpleGuardService } from './core/simple-guard.service';
 import { GestaoNormasComponent } from './home/gestao-normas/gestao-normas.component';
+import { ListagemComponent } from './home/gestao-normas/listagem/listagem.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'gestao-normas',
     component: GestaoNormasComponent,
+    canActivate: [SimpleGuardService]
+  },
+  {
+    path: 'gestao-normas/list',
+    component: ListagemComponent,
     canActivate: [SimpleGuardService]
   }
 ];
