@@ -9,6 +9,3 @@ docker-compose -f .\services-kafka\docker-compose.yaml exec kafka kafka-topics -
 
 echo "waiting topic creation"
 TIMEOUT /T 20 /NOBREAK
-
-echo "setting up simple-consumer (Like a BI listener)"
-docker-compose -f .\services-consumer\docker-compose.yml up -d

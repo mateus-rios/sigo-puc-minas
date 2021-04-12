@@ -10,11 +10,6 @@ cd repositorio-normas
 docker build -t repositorio_normas .
 
 cd ..
-echo "building simple-consumer"
-cd simple-consumer
-docker build -t simple_consumer .
-
-cd ..
 echo "building sigo-interface"
 cd sigo-interface
 docker build -t sigo_interface .
